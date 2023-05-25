@@ -1,17 +1,28 @@
 import React from 'react';
-
+import './index.css'
+import { Route, BrowserRouter as Router , Routes } from 'react-router-dom'
+import Home from './pages/Home';
+import About from './pages/About';
+import ArticleList from './pages/ArticleList';
+import Article from './pages/Article';
+import Navbar from './components/Navbar';
+import NotFound from './pages/NotFound';
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+  <>
+  <Router>
+    <Navbar />
+    <div className='max-w-screen-md mx-auto pt-20 '>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/articles' element={<ArticleList />} />
+      <Route path='/article/:name' element={<Article />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
     </div>
+    </Router>
+    </>
   );
 }
 
